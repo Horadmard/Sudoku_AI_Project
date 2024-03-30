@@ -12,11 +12,12 @@ def the_fullest_location(*, sudoku: list) -> list:
         for j in range(9):
             curitem_values = value_of_location(
                 sudoku=sudoku, location=[i, j])
-            curitem_len = len(curitem_values)
-            if sudoku[i][j] == 0 and curitem_len < tfl_len:
-                tfl = [i, j]
-                tfl_values = curitem_values
-                tfl_len = curitem_len
+            if not(curitem_values == None): 
+                curitem_len = len(curitem_values)
+                if sudoku[i][j] == 0 and curitem_len < tfl_len:
+                    tfl = [i, j]
+                    tfl_values = curitem_values
+                    tfl_len = curitem_len
 
 
 
@@ -24,7 +25,7 @@ def the_fullest_location(*, sudoku: list) -> list:
     # print(tfl_len)
     if tfl_len == 0:
         return None
-    return [tfl, tfl_values]
+    return tfl
 
 
 # if __name__ == "__main__":

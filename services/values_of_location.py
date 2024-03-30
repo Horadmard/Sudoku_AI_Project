@@ -2,35 +2,39 @@
 
 def value_of_location(*, sudoku: list, location: list) -> list:
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    row = location[0]
-    col = location[1]
-    
-    for i in range(9) :
-        number = sudoku[row][i]
-        if number in numbers :
-            numbers.remove(number)
-
-
-
-    for i in range(9) :
-        number = sudoku[i][col]
-        if number in numbers :
-            numbers.remove(number)   
-
-
-    start_row = row - row % 3
-    start_col = col - col % 3
-    for i in range(3) :
-        for j in range(3) :
-            number = sudoku[i + start_row][j + start_col]
+    print(location)
+    if not(location == []):
+        row = location[0]
+        col = location[1]
+        
+        for i in range(9) :
+            number = sudoku[row][i]
             if number in numbers :
                 numbers.remove(number)
-    
 
-    if numbers == [] :
-        return None
-    else :
-        return numbers
+
+
+        for i in range(9) :
+            number = sudoku[i][col]
+            if number in numbers :
+                numbers.remove(number)   
+
+
+        start_row = row - row % 3
+        start_col = col - col % 3
+        for i in range(3) :
+            for j in range(3) :
+                number = sudoku[i + start_row][j + start_col]
+                if number in numbers :
+                    numbers.remove(number)
+        
+
+        if numbers == [] :
+            return None
+        else :
+            return numbers
+    else:
+        return None    
     
 
 
